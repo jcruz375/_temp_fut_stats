@@ -1,66 +1,29 @@
-import { Button, Col, DatePicker, Input, Row, Select } from 'antd';
 import type { NextPage } from 'next';
-import type { SelectProps } from 'antd';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/home.module.scss'
+import FilterRow from '../components/pages/home/filter_component';
+import { Card, Col, Row, Typography } from 'antd';
+import MatchItemComponent from '../components/pages/home/match_item_component';
+const { Text, Title } = Typography;
 
 const Home: NextPage = () => {
-  const options: SelectProps['options'] = [];
-
-  for (let i = 10; i < 36; i++) {
-    options.push({
-      label: i.toString(36) + i,
-      value: i.toString(36) + i,
-    });
-  }
-
-  const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`);
-  };
-
   return (
     <>
-      <Row justify={{ md: 'space-between' }} className={styles.filter_container}>
-        <Col span={6}>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: '100%' }}
-            placeholder="Selecione um país"
-            onChange={handleChange}
-            options={options}
-          />
-        </Col>
-        <Col span={6}>
-          <Select
-            mode="multiple"
-            allowClear
-            style={{ width: '100%' }}
-            placeholder="Todos os campeonatos"
-            onChange={handleChange}
-            options={options}
-          />
-        </Col>
-        <Col span={5}>
-          <Input 
-            placeholder='Buscar por um time'
-          />
-        </Col>
-        <Col span={3}>
-          <DatePicker
-            //TODO config dates
-          />
-        </Col>
-        <Col span={2}>
-          <Button type="primary">
-            Buscar
-          </Button>
-        </Col>
-        <Col span={1}>
-          <Button type="text">
-            Limpar
-          </Button>
-        </Col>
-      </Row>
+      <FilterRow />
+      <Col span={24}>
+        <Row align={'middle'} justify={'start'} className={`w-full`}>
+          <Col span={4} className={`mr-4`}>
+            <Title level={3}>
+              LaLiga
+            </Title>
+          </Col>
+          <Col span={2} pull={2}>
+            <img src="https://flagsapi.com/ES/flat/32.png" className={`mb-3`}/>
+          </Col>
+        </Row>
+        <MatchItemComponent />
+        <MatchItemComponent />
+        <MatchItemComponent />
+      </Col>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { Layout } from '../components/layout'
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { ConfigProvider } from 'antd';
 import theme from '../theme/themeConfig';
